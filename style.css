@@ -1,0 +1,743 @@
+/* RESET & VARIÁVEIS */
+:root {
+    --primary-green: #3ca34b; /* Cor verde aproximada */
+    --light-green: #eaf5eb;
+    --dark-green: #2c7a38;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --bg-light: #f9f9fa;
+    --white: #ffffff;
+    --border-color: #eaeaea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.padding-section {
+    padding: 50px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 { margin-top: 20px; }
+.mt-4 { margin-top: 40px; }
+
+/* BOTÕES */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-green);
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-green);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.btn-icon:hover { background-color: var(--dark-green); }
+
+/* HEADER */
+.top-bar {
+    background-color: #f1f1f1;
+    font-size: 13px;
+    color: var(--text-gray);
+    padding: 8px 0;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    margin-left: 10px;
+    color: var(--text-gray);
+}
+
+.social-icons a:hover { color: var(--primary-green); }
+
+.main-nav-container {
+    background: #7cc06b; /* Fundo verde do menu baseado na imagem */
+    background: linear-gradient(to right, #80c46b, #599d45);
+    padding: 15px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.main-nav a.active {
+    border-bottom: 2px solid var(--white);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(to right, #80c46b, #599d45);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 0 120px; /* Aumentado o padding inferior para as imagens "vazarem" sobre o branco */
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.hero .subtitle {
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.hero-mockups {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha pelo topo para controlarmos a descida exata */
+    position: relative;
+    z-index: 10; /* Garante que fique acima da curva branca */
+    margin-top: 1px;
+}
+
+.mockup-center {
+    z-index: 3;
+    width: 45%; /* Define a proporção do notebook */
+    max-width: 600px;
+    position: relative;
+    /* Removido o box-shadow forte se a própria imagem png já tiver sombra */
+}
+
+.mockup-side {
+    z-index: 1;
+    width: 32%; /* Imagens laterais são menores que a central */
+    max-width: 450px;
+    margin-top: 80px; /* Empurra as telas laterais para baixo, como na foto */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra para destacar contra o fundo verde */
+    border-radius: 8px;
+    /* Removi o opacity: 0.8 do seu código para ficarem sólidas como na referência */
+}
+
+/* A "mágica" da sobreposição (puxando as laterais para trás do notebook) */
+.mockup-side:first-child {
+    margin-right: -10%; /* Puxa a imagem esquerda para a direita */
+}
+
+.mockup-side:last-child {
+    margin-left: -10%; /* Puxa a imagem direita para a esquerda */
+}
+
+/* Curve trick for hero bottom */
+.hero-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px; /* Altura da curva */
+    background: var(--white);
+    clip-path: ellipse(110% 100% at 50% 100%); /* Curva mais suave e ampla */
+    z-index: 1; /* Fica atrás das imagens (z-index 10) */
+}
+
+/* SEÇÃO PADRÃO - TITULOS */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* CSS para posicionar as setas perfeitamente ao lado do texto */
+.hero .subtitle {
+    position: relative;
+    display: inline-block; /* Para as setas flutuarem com base no tamanho do texto */
+    font-size: 24px;
+    margin-bottom: 1px;
+}
+
+
+.seta-hero {
+    position: absolute;
+    top: 10px; /* Ajuste para subir ou descer a seta */
+    width: 80px; /* Ajuste conforme o tamanho real do seu arquivo de imagem */
+}
+
+.seta-esq {
+    right: 100%;
+    margin-right: 30px; /* Distância da seta para a primeira letra */
+}
+
+.seta-dir {
+    left: 100%;
+    margin-left: 30px; /* Distância da seta para a última letra */
+    transform: scaleX(-1);
+}
+
+/* Destaque do texto de SEO na Hero */
+.hero p strong {
+    background-color: var(--dark-green); /* Usa o verde escuro que já existe nas suas variáveis */
+    color: var(--white); /* Deixa o texto branco para dar leitura */
+    padding: 4px 12px; /* Dá um respiro entre o texto e a borda do fundo */
+    border-radius: 6px; /* Deixa as pontas arredondadas para um visual mais moderno */
+    display: inline-block; /* Garante que o fundo e o espaçamento funcionem certinho na linha */
+    font-weight: 700;
+}
+
+.badge {
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    color: var(--text-dark);
+}
+
+/* CASE DE SUCESSO */
+.case-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.case-images img, .case-details img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.stat-box h3 {
+    font-size: 28px;
+    color: var(--text-dark);
+}
+
+.testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.testimonial-header .avatar {
+    width: 60px; /* Define a largura fixa */
+    height: 60px; /* Define a altura fixa igual à largura para ficar um círculo perfeito */
+    border-radius: 50%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem amassar ou distorcer */
+    flex-shrink: 0; /* Impede que o avatar seja "esmagado" se o texto ao lado for muito longo no mobile */
+}
+
+.stars { color: #f39c12; }
+.stars-white { color: #fff; margin-top: 10px;}
+
+/* PORTFÓLIO */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.portfolio-info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-info h3 { font-size: 16px; margin-bottom: 5px;}
+.portfolio-info p { font-size: 12px; color: var(--text-gray);}
+
+/* CLIENTES */
+.clients-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.google-rating-banner {
+    background: linear-gradient(to right, #80c46b, #599d45);
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.rating-card {
+    background: white;
+    color: var(--text-dark);
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.rating-score strong { font-size: 24px; color: var(--primary-green); margin-right: 10px;}
+
+/* SOBRE */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-images img { width: 100%; border-radius: 10px;}
+
+.experience-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.experience-box i { font-size: 40px; color: var(--primary-green); }
+.experience-box h3 { font-size: 24px; color: var(--primary-green); }
+
+.features-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.feature i { font-size: 24px; }
+
+/* BARRA DE STATS */
+.stats-bar {
+    background-color: #8cc63f;
+    padding: 40px 0;
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 20px;
+}
+
+.stat-item i { font-size: 30px; margin-bottom: 10px; }
+.stat-item h3 { font-size: 36px; }
+.stat-item p { font-size: 14px; }
+
+/* BLOG */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.blog-card img { width: 100%; display: block; }
+.blog-content { padding: 25px; }
+.blog-content .date { font-size: 12px; color: #999; margin-bottom: 10px; display: block;}
+.blog-content h3 { font-size: 18px; margin-bottom: 15px;}
+.blog-content p { font-size: 14px; color: var(--text-gray); margin-bottom: 15px;}
+.read-more { color: var(--primary-green); font-weight: bold; font-size: 14px;}
+
+/* FOOTER */
+.searched-topics { border-bottom: 1px solid var(--border-color); }
+.d-flex { display: flex; gap: 40px; }
+.align-center { align-items: center; }
+.text-green { color: var(--primary-green); }
+.topics-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+.topics-list li { margin-bottom: 10px; font-size: 14px;}
+
+.main-footer {
+    background-color: #7cc06b;
+    color: white;
+    padding: 60px 0;
+}
+
+/* No seu style.css, altere esta parte: */
+.footer-grid {
+    display: grid;
+    /* Antes era 2fr. Mudando para 1fr ou 1.2fr ela fica bem menor */
+    grid-template-columns: 1.2fr 1fr 1fr 1fr; 
+    gap: 40px;
+}
+
+.footer-col img {
+    max-width: 180px; /* Ajuste esse valor conforme desejar */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+
+.footer-col h4 { margin-bottom: 20px; font-size: 16px;}
+.footer-col ul li { margin-bottom: 10px; font-size: 14px;}
+.footer-col ul li i { margin-right: 10px; }
+
+.btn-outline-white {
+    display: inline-block;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.social-icons-footer a {
+    display: inline-block;
+    width: 35px; height: 35px;
+    border: 1px solid white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 33px;
+    color: white;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    background-color: #6da95e;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+/* Garante que imagens grandes não quebrem o layout mobile */
+.clients img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem se ela for menor que a tela */
+}
+
+/* Ajuste específico para o banner de avaliação */
+img[src*="banner-avaliacao"] {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* PORTFÓLIO */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Aumentei o gap para dar espaço entre os cards */
+    padding-bottom: 20px; /* Dá espaço extra na parte de baixo do grid */
+}
+
+.portfolio-item {
+    position: relative; /* Transforma o card na âncora para a caixa branca */
+    background: transparent;
+    border-radius: 15px; 
+    /* Removemos o overflow: hidden antigo para a caixa branca poder "vazar" */
+    margin-bottom: 30px; /* Espaço para a caixa branca que vai flutuar embaixo */
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px; /* Arredonda a imagem do notebook */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Coloca uma sombra suave na imagem */
+}
+
+.portfolio-info {
+    position: absolute;
+    bottom: 10px; /* Faz a caixa branca "vazar" 20px para baixo da imagem */
+    left: 15px; /* Margem lateral */
+    right: 15px; /* Margem lateral */
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra mais forte para destacar que está por cima */
+    z-index: 2; /* Garante que fique por cima da imagem */
+}
+
+.portfolio-info > div {
+    /* Limita a largura do texto para ele não empurrar o botão verde */
+    max-width: 75%; 
+}
+
+.portfolio-info h3 { 
+    font-size: 15px; 
+    color: var(--text-gray); /* Tom de cinza mais escuro do título */
+    margin-bottom: 3px;
+}
+
+.portfolio-info p { 
+    font-size: 12px; 
+    color: #888; /* Cinza mais claro para o subtítulo */
+    line-height: 1.4;
+}
+
+/* O botão já deve puxar do seu CSS base, mas aqui vai um reforço para ele ficar idêntico */
+.portfolio-info .btn-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0; /* Impede que o botão seja esmagado pelo texto */
+    font-size: 18px;
+}
+
+/* WPP FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+    .case-content, .about-grid { grid-template-columns: 1fr; flex-direction: column; }
+    .hero h1 { font-size: 28px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .topics-list { grid-template-columns: 1fr; }
+    .d-flex { flex-direction: column; }
+}
+
+@media (max-width: 768px) {
+    .top-bar-content { flex-direction: column; gap: 10px; text-align: center;}
+    .mobile-menu-btn { display: block; }
+    .main-nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #599d45;
+        padding: 20px;
+    }
+    .main-nav.active { display: block; }
+    .main-nav ul { flex-direction: column; gap: 15px;}
+    
+    .hero-mockups { flex-direction: column; align-items: center; }
+    .mockup-side { display: none; /* Esconde os laterais no mobile para caber melhor */ }
+    .mockup-center { width: 100%; }
+    
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* ========================================= */
+/* MENU PRINCIPAL APRIMORADO                 */
+/* ========================================= */
+
+.main-nav ul {
+    display: flex;
+    gap: 30px; /* Um pouco mais de respiro entre os links */
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative; /* Necessário para a linha animada */
+    padding: 8px 0; /* Aumenta a área de clique (hitbox) */
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Espaço perfeito entre o texto e a setinha */
+}
+
+/* Efeito de Opacidade ao passar o mouse */
+.main-nav a:hover {
+    opacity: 0.9;
+}
+
+/* Criando a linha animada embaixo do texto */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%; /* Começa invisível (sem largura) */
+    height: 2px;
+    background-color: var(--white);
+    transition: width 0.3s ease-in-out; /* Faz a animação de crescimento suave */
+}
+
+/* A linha cresce quando passa o mouse OU quando está na página ativa */
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* Remove a borda antiga estática do item ativo para usar a animada nova */
+.main-nav a.active {
+    border-bottom: none; 
+}
+
+/* Animação do Ícone de Dropdown (Setinha) */
+.main-nav a i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* Faz a setinha girar 180 graus ao passar o mouse */
+.main-nav a:hover i {
+    transform: rotate(180deg);
+}
+
+.topics-title {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    gap: 15px; 
+    flex-shrink: 0; /* Impede que a lista de links ao lado esprema este bloco */
+}
+
+.topics-title h3 {
+    margin: 0; 
+    white-space: nowrap; /* Mágica: Força o texto a ficar em uma única linha sempre */
+    font-size: 20px; /* Você pode diminuir esse valor se achar que ficou grande demais */
+}
