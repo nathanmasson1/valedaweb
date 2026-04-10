@@ -663,6 +663,26 @@ img[src*="banner-avaliacao"] {
     
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
     .stats-grid { grid-template-columns: 1fr; }
+
+    /* ========================================== */
+    /* NOVAS CORREÇÕES PARA NÃO ESTOURAR A TELA   */
+    /* ========================================== */
+
+    /* 1. Permite que o título do rodapé quebre a linha no mobile */
+    .topics-title h3 {
+        white-space: normal; 
+    }
+
+    /* 2. Esconde as setas da Hero no mobile (pois não há espaço lateral para elas) */
+    .seta-hero {
+        display: none;
+    }
+
+    /* 3. Força as seções com minmax(300px) a virarem 1 coluna 100% no celular */
+    .features-row, 
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ========================================= */
