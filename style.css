@@ -68,6 +68,13 @@ ul {
     background-color: var(--dark-green);
 }
 
+/* Tamanho da Logo no Cabeçalho (Desktop) */
+.logo img {
+    max-width: 180px; /* Diminua ou aumente este valor para chegar no tamanho ideal pro PC */
+    height: auto;
+    display: block;
+}
+
 .btn-icon {
     display: flex;
     align-items: center;
@@ -643,6 +650,11 @@ img[src*="banner-avaliacao"] {
 }
 
 @media (max-width: 768px) {
+
+    .logo img {
+        max-width: 80px; /* Deixa a logo pequena e elegante no celular */
+    }
+
     .top-bar-content { flex-direction: column; gap: 10px; text-align: center;}
     .mobile-menu-btn { display: block; }
     .main-nav {
@@ -664,25 +676,97 @@ img[src*="banner-avaliacao"] {
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
     .stats-grid { grid-template-columns: 1fr; }
 
+    /* 4. Oculta o texto do topo (top-info) na versão mobile */
+    .top-info {
+        display: none;
+    }
+
+    /* 5. Ajusta o selo verde de SEO para caber em uma única linha no celular */
+    .hero p {
+        font-size: 15px; /* Reduz um pouco o tamanho do parágrafo inteiro para ajudar no espaço */
+    }
+
+    .hero p strong {
+        font-size: 12px; /* Reduz o tamanho da letra apenas da parte com fundo verde */
+        padding: 2px 8px; /* Diminui o preenchimento (gordurinha) do fundo verde */
+        white-space: nowrap; /* Força o texto a não quebrar a linha */
+    }
+
+    /* Altere de 1fr para 1fr 1fr */
+    .stats-grid { 
+        grid-template-columns: 1fr 1fr; /* Cria duas colunas com o mesmo tamanho */
+        gap: 15px; /* Diminuí um pouco o espaçamento para caber melhor na telinha */
+    }
+
+    /* Dica: Como agora o espaço de cada bloco diminuiu pela metade, 
+       é bom diminuir um pouco o tamanho da fonte para o texto não encavalar */
+    .stat-item h3 {
+        font-size: 26px; /* Diminui os números (era 36px) */
+    }
+
+    .stat-item p {
+        font-size: 11px; /* Diminui o texto (era 14px) */
+    }
+
+    .hero{
+            padding-bottom: 30px;
+    }
+
     /* ========================================== */
-    /* NOVAS CORREÇÕES PARA NÃO ESTOURAR A TELA   */
+    /* AJUSTE DE ESPAÇAMENTO DE LINHAS (MOBILE)   */
     /* ========================================== */
 
-    /* 1. Permite que o título do rodapé quebre a linha no mobile */
+    /* Reduz o espaçamento das linhas de todos os títulos grandes da Hero e das seções */
+    .hero h1, 
+    .hero .subtitle,
+    .section-header h2,
+    .section-header p {
+        line-height: 1.2; /* Junta as linhas do texto. O padrão era 1.6 */
+    }
+
+    /* Opcional: Se quiser que o H1 da Hero fique um pouco menor no celular para caber melhor */
+    .hero h1 {
+        font-size: 26px; /* Ajuste se achar necessário */
+        margin-bottom: 10px; /* Diminui o espaço entre o H1 e o parágrafo de baixo */
+    }
+    
+    .hero .subtitle {
+        font-size: 20px; /* Garante que o subtítulo não fique desproporcional */
+    }
+
+    /* ========================================== */
+    /* CORREÇÕES DEFINITIVAS DE ESTOURO MOBILE    */
+    /* ========================================== */
+
+    /* 1. Permite que o título do rodapé quebre a linha no celular */
     .topics-title h3 {
         white-space: normal; 
     }
 
-    /* 2. Esconde as setas da Hero no mobile (pois não há espaço lateral para elas) */
+    /* 2. Oculta as setas da Hero (elas vazam para fora da tela) */
     .seta-hero {
         display: none;
     }
 
-    /* 3. Força as seções com minmax(300px) a virarem 1 coluna 100% no celular */
+    /* 3. Empilha as estatísticas do Case de Sucesso (773 acessos / 1866 acessos) */
+    .stats-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* 4. Força as seções com minmax(300px) a virarem 1 coluna para não espremer a tela */
     .features-row, 
     .blog-grid {
         grid-template-columns: 1fr;
     }
+    
+    /* 5. Se o selo de SEO do topo continuar grande em telas muito pequenas, permitimos a quebra de linha com espaçamento */
+    .hero p strong {
+        white-space: normal;
+        line-height: 2; /* Dá um respiro para o fundo verde não encavalar se virar 2 linhas */
+    }
+
+
 }
 
 /* ========================================= */
@@ -761,3 +845,4 @@ img[src*="banner-avaliacao"] {
     white-space: nowrap; /* Mágica: Força o texto a ficar em uma única linha sempre */
     font-size: 20px; /* Você pode diminuir esse valor se achar que ficou grande demais */
 }
+
